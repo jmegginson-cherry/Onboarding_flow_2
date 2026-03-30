@@ -217,7 +217,7 @@ withcherry.com`;
     };
 
     // ── HEADER BAND ──
-    setFill("#02C37D"); doc.rect(0, 0, W, 90, "F");
+    setFill("#019860"); doc.rect(0, 0, W, 90, "F");
     setTxt("#ffffff");
     doc.setFontSize(22); doc.setFont("helvetica","bold");
     doc.text(practice.practiceName || "Your Practice", margin, 38);
@@ -261,20 +261,19 @@ withcherry.com`;
     };
 
     const checkRow = (checked, label) => {
-      checkPage(20);
-      // checkbox
+      checkPage(24);
       setDraw(checked ? "#02C37D" : "#e0ece0");
       setFill(checked ? "#02C37D" : "#ffffff");
       doc.setLineWidth(1);
-      doc.roundedRect(margin, y - 9, 11, 11, 2, 2, checked ? "FD" : "D");
+      doc.roundedRect(margin, y - 10, 11, 11, 2, 2, checked ? "FD" : "D");
       if (checked) {
         setTxt("#ffffff"); doc.setFontSize(8); doc.setFont("helvetica","bold");
-        doc.text("✓", margin + 2, y - 0.5);
+        doc.text("✓", margin + 2, y - 1);
       }
       setTxt("#0d1b0d"); doc.setFontSize(10); doc.setFont("helvetica","normal");
       const lines = doc.splitTextToSize(label, contentW - 18);
       doc.text(lines, margin + 18, y);
-      y += lines.length * 14 + 4;
+      y += lines.length * 14 + 8;
     };
 
     const rowPair = (label, val) => {
@@ -289,17 +288,17 @@ withcherry.com`;
     };
 
     const goalBox = (title, date, e, a, c) => {
-      checkPage(80);
+      checkPage(100);
       setFill("#f5f7f5"); setDraw("#e0ece0"); doc.setLineWidth(0.5);
-      doc.roundedRect(margin, y, contentW / 2 - 6, 72, 4, 4, "FD");
+      doc.roundedRect(margin, y, contentW / 2 - 6, 90, 4, 4, "FD");
       setTxt("#0d1b0d"); doc.setFontSize(10); doc.setFont("helvetica","bold");
-      doc.text(title, margin + 12, y + 16);
-      if (date) { setTxt("#6b7c6b"); doc.setFontSize(9); doc.setFont("helvetica","normal"); doc.text(date, margin + 12, y + 28); }
+      doc.text(title, margin + 12, y + 18);
+      if (date) { setTxt("#6b7c6b"); doc.setFontSize(9); doc.setFont("helvetica","normal"); doc.text(date, margin + 12, y + 32); }
       [["Estimators", e], ["Applications", a], ["Checkouts", c]].forEach(([l, v], i) => {
         setTxt("#6b7c6b"); doc.setFontSize(9); doc.setFont("helvetica","normal");
-        doc.text(l, margin + 12, y + 44 + i * 14);
-        setTxt("#02C37D"); doc.setFontSize(10); doc.setFont("helvetica","bold");
-        doc.text(v || "—", margin + contentW/2 - 18, y + 44 + i * 14, { align:"right" });
+        doc.text(l, margin + 12, y + 52 + i * 16);
+        setTxt("#02C37D"); doc.setFontSize(11); doc.setFont("helvetica","bold");
+        doc.text(v || "—", margin + contentW/2 - 18, y + 52 + i * 16, { align:"right" });
       });
     };
 
@@ -328,17 +327,17 @@ withcherry.com`;
     const savedY = y;
     y = savedY;
     setFill("#f5f7f5"); setDraw("#e0ece0"); doc.setLineWidth(0.5);
-    doc.roundedRect(margin + contentW/2 + 6, savedY, contentW/2 - 6, 72, 4, 4, "FD");
+    doc.roundedRect(margin + contentW/2 + 6, savedY, contentW/2 - 6, 90, 4, 4, "FD");
     setTxt("#0d1b0d"); doc.setFontSize(10); doc.setFont("helvetica","bold");
-    doc.text("By Second Review Call", margin + contentW/2 + 18, savedY + 16);
-    if (review2Date) { setTxt("#6b7c6b"); doc.setFontSize(9); doc.setFont("helvetica","normal"); doc.text(review2Date, margin + contentW/2 + 18, savedY + 28); }
+    doc.text("By Second Review Call", margin + contentW/2 + 18, savedY + 18);
+    if (review2Date) { setTxt("#6b7c6b"); doc.setFontSize(9); doc.setFont("helvetica","normal"); doc.text(review2Date, margin + contentW/2 + 18, savedY + 32); }
     [["Estimators", goals.r2Estimators], ["Applications", goals.r2Apps], ["Checkouts", goals.r2Checkouts]].forEach(([l, v], i) => {
       setTxt("#6b7c6b"); doc.setFontSize(9); doc.setFont("helvetica","normal");
-      doc.text(l, margin + contentW/2 + 18, savedY + 44 + i * 14);
-      setTxt("#02C37D"); doc.setFontSize(10); doc.setFont("helvetica","bold");
-      doc.text(v || "—", W - margin - 6, savedY + 44 + i * 14, { align:"right" });
+      doc.text(l, margin + contentW/2 + 18, savedY + 52 + i * 16);
+      setTxt("#02C37D"); doc.setFontSize(11); doc.setFont("helvetica","bold");
+      doc.text(v || "—", W - margin - 6, savedY + 52 + i * 16, { align:"right" });
     });
-    y = savedY + 80;
+    y = savedY + 98;
 
     y += 10;
     checkRow(goals.websiteLive, "Cherry added to practice website");
